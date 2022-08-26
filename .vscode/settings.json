@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.ts": "typescript",
+    "stdint.h": "c",
+    "stddef.h": "c",
+    "cstdint": "c",
+    "common.h": "c",
+    "memory.h": "c",
+    "value.h": "c"
+  }
+}
