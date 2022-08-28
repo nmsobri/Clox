@@ -6,6 +6,11 @@
     "cstdint": "c",
     "common.h": "c",
     "memory.h": "c",
-    "value.h": "c"
-  }
+    "value.h": "c",
+    "chunk.h": "c",
+    "stdbool.h": "c"
+  },
+  "gotoSymbolStack.currentStackPosition": 0,
+  "gotoSymbolStack.filePositionInfo": [],
+  "gotoSymbolStack.maxStackPosition": 0
 }
