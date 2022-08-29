@@ -1,10 +1,9 @@
-
-#include "vm.h"
-
 #include <stdio.h>
 
+#include "vm.h"
 #include "common.h"
 #include "debug.h"
+#include "compiler.h"
 
 VM vm;
 
@@ -18,6 +17,23 @@ void initVM() {
 
 void freeVM() {
 }
+
+/**
+ * vm.chunk->constants.value is a pointer/array of stored Value
+ *     0       1       2
+ *  +-----+ +-----+ +-----+
+ *  | 1.2 | | 3.4 | | 5.6 |
+ *  +-----+ +-----+ +-----+
+ *  ^-------------------|----------------------------------|--------------------------------------|
+ *                      |                                  |                                      |
+ *                      |                                  |                                      |
+ *                      |                                  |                                      |
+ *                      |                                  |                                      |
+ * +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+
+ * |OP_CONSTANT | |      0     | |OP_CONSTANT | |      1     | |   OP_ADD   | |OP_CONSTANT | |     2      | | OP_DIVIDE  | | OP_NEGATE  |
+ * +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+
+ * vm.ip is a pointer/array of bytecode instruction
+ **/
 
 static InterpretResult run() {
 #define READ_BYTE() (*vm.ip++)
@@ -80,10 +96,9 @@ static InterpretResult run() {
 #undef BINARY_OP
 }
 
-InterpretResult interpret(Chunk* chunk) {
-    vm.chunk = chunk;
-    vm.ip = vm.chunk->code;
-    return run();
+InterpretResult interpret(const char* source) {
+    compile(source);
+    return INTERPRET_OK;
 }
 
 void push(Value value) {

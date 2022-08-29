@@ -16,7 +16,7 @@ typedef enum OPCode {
 typedef struct Chunk {
     int count;
     int capacity;
-    uint8_t* code;
+    uint8_t* code;  // array/list of bytecode instruction
     int* lines;
     ValueArray constants;
 } Chunk;
