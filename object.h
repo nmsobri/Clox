@@ -23,6 +23,7 @@ struct ObjString {
     Obj obj;  // base struct/type punning ( must be first member in order for it to work)
     int length;
     char* chars;
+    uint32_t hash;
 };
 
 ObjString* takeString(char* chars, int length);
