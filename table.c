@@ -137,7 +137,7 @@ ObjString* tableFindString(Table* table, const char* chars, int length, uint32_t
         return NULL;
     }
 
-    uint32_t index = hash % table->capacity;
+    uint32_t index = hash % table->capacity;  // bound to array capacity
 
     for (;;) {
         Entry* entry = &table->entries[index];

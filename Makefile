@@ -10,7 +10,7 @@ $(OBJ):%.o:%.c
 	@$(CC) -c -g $< -o $@
 
 run:$(EXE)
-	@./$< ||:
+	@./$< examples/main.clox ||:
 
 clean:
 	@rm -rf *.o *.exe; clear

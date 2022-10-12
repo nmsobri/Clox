@@ -1,0 +1,7 @@
+var name = "sobri che puteh";
+var greet = "hello ";
+
+greet = greet + name;
+
+
+print greet;
